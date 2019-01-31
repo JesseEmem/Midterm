@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Json</title>
+	<script>
+		/*create object*/
+		let http = new XMLHttpRequest();
+		let x = document.getElementbyID("Do");
+		/*create function to perform request to server*/
+		function loadAjax()
+		{
+			http.onreadystatechange=function()
+			{
+				x.innerHTML = "Loading...";//output while requesting//
+				if (http.readyonstate==4 && http.status==200)
+				{
+				let data = JSON.parse(xhttp.response);//Converting String data to JSON data//
+				let html = "";
+				for(let x = 0; x<data.length; x++){
+					html+="<li>"+data[i].completed+"</li>"//Storing all the pulled data//
+				}
+				x.innerHTML = html;
+			}
+			else if(http==503)
+			{
+				console.log("Service unavailable");
+			}
+		}
+		console.log(http);
+		//function to Get data from url//
+		http.open("GET", "https://jsonplaceholder.typicode.com/todos",true);
+		http.send();//function to send//
+	</script>
+</head>
+<body>
+	<center><h2>This Html</h2>
+	<button onclick="loadAjax()">Click This</button><!--Button to trigger Ajax function-->
+	<ul id="do"></ul><!--container/storage of pulled data-->
+	</center> 
+</body>
+</html>
